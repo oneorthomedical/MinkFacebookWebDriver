@@ -1,7 +1,5 @@
 # Mink Facebook WebDriver extension
 
-[![Build Status](https://api.travis-ci.com/silverstripe/MinkFacebookWebDriver.svg?branch=1)](https://travis-ci.com/silverstripe/MinkFacebookWebDriver)
-
 Currently forked from [https://github.com/minkphp/MinkSelenium2Driver/] and updated to use
 the [facebook php webdriver](https://github.com/facebook/php-webdriver).
 
