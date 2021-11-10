@@ -974,13 +974,38 @@ JS;
     }
 
     /**
+     * Globally press a key i.e. not typing into an element
+     */
+    public function globalKeyPress($char, $modifier = null)
+    {
+        /** @var RemoteKeyboard $keyboard */
+        $keyboard = $this->webDriver->getKeyboard();
+        if ($modifier) {
+            $keyboard->pressKey($modifier);
+        }
+        $keyboard->pressKey($char);
+        if ($modifier) {
+            $keyboard->releaseKey($modifier);
+        }
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function dragTo($sourceXpath, $destinationXpath)
     {
         $source = $this->findElement($sourceXpath);
         $destination = $this->findElement($destinationXpath);
-        $this->webDriver->action()->dragAndDrop($source, $destination);
+        $this->webDriver->action()->dragAndDrop($source, $destination)->perform();
+    }
+
+    /**
+     * Drag and drop an element by x,y pixels
+     */
+    public function dragBy($sourceXpath, $xOffset, $yOffset)
+    {
+        $source = $this->findElement($sourceXpath);
+        $this->webDriver->action()->dragAndDropBy($source, $xOffset, $yOffset)->perform();
     }
 
     /**
